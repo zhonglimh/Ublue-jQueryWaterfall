@@ -41,7 +41,7 @@ $(function() {
 	* http://www.bluesdream.com
 	*
 	* Create 2012.02.21
-	* Update 2012.10.18 ( 1.由于内容是absolute属性，导致元素偏离了文档，嵌入网页时无法撑开父级区域 2. 性能和代码结构优化 3.已知BUG修复 )
+	* Update 2012.10.18 ( 1.增加瀑布流高度的计算，修复嵌入网页时无法撑开父级区域的问题 2. 性能和代码结构优化 3.已知BUG修复 )
 	* Update 2013.06.03 ( 1.增加瀑布流可显范围的修改提示 2.增加初次加载时的loading效果 )
 	*/
 	function imgLoading(){ //图片加载loading(仅初始化时执行)
@@ -115,7 +115,9 @@ $(function() {
 		}
 	});
 	window.onload = function() { waterfall(); }; //当窗口改变时，执行函数
-	window.onresize = function() { waterfall(); }; //当窗口改变时，执行函数
+	$(window).resize(function(){ //当窗口改变时，执行函数
+		waterfall();
+	});
 });
 </script>
 </head>

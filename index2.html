@@ -32,7 +32,7 @@ $(function(){
 	/*!
 	* Ublue jQuery Waterfall
 	* Create 2012.02.21
-	* Update 2012.10.18 ( 1.由于内容是absolute属性，导致元素偏离了文档，嵌入网页时无法撑开父级区域 2. 性能和代码结构优化 3.已知BUG修复)
+	* Update 2012.10.18 ( 1.增加瀑布流高度的计算，修复嵌入网页时无法撑开父级区域的问题 2. 性能和代码结构优化 3.已知BUG修复 )
 	* Copyright (c) 2011, 梦幻神化 
 	* http://www.bluesdream.com
 	*/
@@ -70,7 +70,9 @@ $(function(){
 		};
 	};
 	window.onload = function() { waterfall(); } //当页面加载完毕，执行函数
-	window.onresize = function() { waterfall(); }; //当窗口改变时，执行函数
+	$(window).resize(function(){ //当窗口改变时，执行函数
+		waterfall();
+	});
 
 	function wfLoadImg(){
 		var json = "js/json_load.js";
